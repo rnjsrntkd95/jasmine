@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            display: grid;
+            grid-auto-rows: 200px;
+            grid-gap: 10px;
+
+            /* grid-template-areas:
+                "header header header"
+                "content content sidebar"
+                "content content sidebar"
+                "footer footer footer"; */
+
+            /* grid-template-columns: 2fr 1fr 2fr 1fr; */
+
+            /* grid-template-columns: repeat(2, 1fr) repeat(2, 2fr); */
+
+            /* grid-template-columns: minmax(400px, 1fr) repeat(2, 1fr) minmax(400px, 1fr); */
+
+            grid-template-columns: repeat(3, minmax(400px, 1fr)) 1fr;
+        }
+
+        .first {
+            /* grid-area: footer; */
+            background-color: orange;
+        }
+
+        .second {
+            /* grid-area: sidebar; */
+            background-color: yellowgreen;
+        }
+
+        .third {
+            /* grid-area: header; */
+            background-color: blueviolet;
+        }
+
+        .fourth {
+            /* grid-area: content; */
+            background-color: lightskyblue;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="first box">first</div>
+        <div class="second box">second</div>
+        <div class="third box">third</div>
+        <div class="fourth box">fourth</div>
+    </div>
+</body>
+
+</html>

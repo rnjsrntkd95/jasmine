@@ -1,0 +1,36 @@
+/* 
+:root {
+    --listSize: 25px;
+    --listBorder: 1px solid lightblue;
+  }
+  
+  ul > li {
+    --mainColor: #42b883;
+    font-size: var(--listSize);
+    color: var(--mainColor);
+    border: var(--listBorder);
+    width: min-content;
+  }
+  
+  ul {
+    list-style: none;
+    color: var(--mainColor);
+  } 
+*/
+
+
+
+@custom-selector :--headers h1, h2, h3, h4, h5, h6;
+
+    :--headers {
+     margin-block: 0;
+      color: #42b883;
+    }
+
+@custom-media --ipad-size (650px <= width < 850px);
+
+@media(--ipad-size) {
+    body {
+        background-color: beige;
+    }
+}
