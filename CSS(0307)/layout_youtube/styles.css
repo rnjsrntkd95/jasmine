@@ -1,0 +1,284 @@
+:root {
+    --headerMargin: 10px;
+    --headerHeight: 56px;
+    --headerColor: white;
+    --mainColor: #eeeeee;
+    --navbarColor: white;
+    --postColor: white;
+}
+
+* {
+    border: 1px solid black;
+}
+
+
+body {
+    margin: 0;
+}
+
+@custom-media --lg-size (max-width:1400px);
+@custom-media --sm-size (max-width:600px);
+
+
+
+header {
+    position: fixed;
+    width: 100vw;
+    background-color: var(--headerColor);
+}
+
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 18fr repeat(4, 1fr);
+    margin-inline: var(--headerMargin);
+    height: var(--headerHeight);
+}
+
+.header-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 13px;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: row;
+    width: 52%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    border-right: 0;
+    padding-inline: 5px;
+    box-sizing: border-box;
+}
+
+input {
+    border: 0px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search {
+    flex: 1;
+}
+
+.search-keyboard {
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.search-submit {
+    width: 70px;
+    height: 100%;
+    border: 1px solid lightgrey;
+}
+
+main {
+    height: calc(100vh - var(--headerHeight));
+    padding-top: var(--headerHeight);
+    background-color: var(--mainColor);
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+nav {
+    overflow-y: scroll;
+    background-color: var(--navbarColor);
+    padding-top: 5px;
+}
+
+nav::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-box {
+    padding-block: 13px;
+    border-bottom: 1.5px solid #eeeeee;
+}
+
+.nav-item {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    padding: 10px 10px;
+}
+
+.nav-box:first-child > div:first-child {
+    background-color: lightgrey;
+}
+
+.nav-item:hover {
+    background-color: #eeeeee;
+}
+
+.nav-category {
+    padding-left: 25px;
+}
+
+.nav-item-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item-title {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.subscribe {
+    grid-template-columns: 2fr 4fr 1fr;
+}
+
+.nav-footer-item {
+    display: block;
+    padding-left: 25px;
+    word-break: keep-all;
+}
+
+.nav-footer-item > a {
+    text-decoration: none;
+    color: grey;
+    font-size: 0.8rem;
+}
+.nav-footer > .nav-footer-item:hover {
+    background-color: transparent;
+}
+
+.copyright {
+    color: grey;
+    font-size: 0.8rem;
+}
+
+.contents-box {
+    overflow-y: scroll;
+    padding: 20px 30px;
+}
+
+.contents-title {
+    font-size: 20px;
+}
+
+.contents-list {
+    border-bottom: 4px solid lightgrey;
+}
+
+.contents-item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* item이 한 개일 땐 max 320px */
+    grid-gap: 20px;
+}
+
+.contents-media {
+    margin-bottom: 40px;
+}
+
+.thumbnail {
+    width: 100%;
+    /* 이미지가 있으면 썸네일 이미지를 일정한 크기로 맞추어 
+    width에 따라 height가 자동 변환 될 수 있도록 해야함
+    (하단 속성 삭제) */
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail-box {
+    display: grid;
+    grid-template-columns: 3fr 10fr 2fr;
+}
+
+.thumbnail-profile {
+    place-self: center;
+}
+
+.thumbnail-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail-title {
+    display:grid;
+    grid-template-columns: minmax(0,1fr);
+    text-overflow: ellipsis; /* grid에서 ellipsis가 적용안되는 문제가 있음 */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.thumbnail-menu {
+    place-self: center;
+}
+
+.contents-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* post가 한 개일 땐 max 400px */
+    grid-gap: 20px;
+    padding-bottom: 40px;
+}
+
+.post {
+    height: 200px;
+    background-color: var(--postColor);
+    padding: 10px 20px;
+    border: 1px solid lightgrey;
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+}
+
+.post-header {
+    align-self: center;
+}
+
+.post-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-status {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-status-list > span {
+    margin-inline: 3px;
+}
+
+.contents-new {
+    padding-top: 50px;
+}
+
+@media(--lg-size) {
+    main {
+        grid-template-columns: 100px 1fr;
+    }
+    .nav-box {
+        display: none;
+        border: none;
+    }
+
+    .nav-box:first-child {
+        display: block;
+    }
+
+    .nav-item {
+        display: block;
+    }
+
+    .nav-item-title {
+        text-align: center;
+        margin-top: 5px;
+    }
+}
+
+@media(--sm-size) {
+    main {
+        grid-template-columns: 0px 1fr;
+    }
+}
