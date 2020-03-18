@@ -1,0 +1,141 @@
+@import '_config';
+
+/* mixin */
+@mixin default-box($width, $height:100px) {
+    width: $width;
+    height: $height;
+    background-color: $color-primary;
+  
+    border: {
+      width: 1px;
+      style: solid;
+      color: black;
+      radius: 5px;
+    }
+}
+
+@mixin flex-box($align, $justify, $direction: row, $wrap: wrap) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+
+.flex-center {
+    @include flex-box(center, center);
+}
+
+.flex-nowrap-center {
+    @include flex-box(center, center, $wrap: nowrap);
+}
+
+/* function */
+$screen-width: 100vw;
+@function columns($size: 1, $columns:12) {
+    @return $screen-width * ($size / $columns);
+}
+
+/* if */
+@function color-picker($color-name) {
+    @if($color-name == orange) {
+        @return rgb(255, 165, 0);
+    } @else if($color-name == banana) {
+        @return rgb(255, 255, 53);
+    } @else if($color-name == melon) {
+        @return rgb(180, 253, 188);
+    } @else {
+        @return rgb(255, 255, 255);
+    }
+}
+
+/* for */
+@for $i from 1 through 3 {  // 1부터 3까지
+    button:nth-child(#{$i}) {
+        width : 100px * $i;
+    }
+}
+
+@for $i from 3 to 6 {   // 3부터 6직전까지
+    button:nth-child(#{$i}) {
+        width : 200px / $i;
+    }
+}
+
+.custom-container {
+    $columns-num: 12;
+    width: $screen-width;
+    $height: 300px;
+    $color: orange;
+    $i: 1;
+
+    .custom-col-1 {
+        width: columns(1, $columns-num);
+        height: $height;
+        background-color: color-picker(orange);
+        margin: 0;
+        display: inline-block;
+    }
+    .custom-col-2 {
+        width: columns(2, $columns-num);
+        height: $height;
+        background-color: $color;
+        margin: 0;
+        display: inline-block;
+    }
+    .custom-col-3 {
+        width: columns(3, $columns-num);
+        height: $height;
+        background-color: color-picker(banana);
+        margin: 0;
+        display: inline-block;
+    }
+    .custom-col-4 {
+        width: columns(4, $columns-num);
+        height: $height;
+        background-color: $color;
+        margin: 0;
+        display: inline-block;
+    }
+    .custom-col-5 {
+        width: columns(5, $columns-num);
+        height: $height;
+        background-color: $color;
+        margin: 0;
+        display: inline-block;
+    }
+    .custom-col-6 {
+        width: columns(6, $columns-num);
+        height: $height;
+        background-color: color-picker(melon);
+        margin: 0;
+        display: inline-block;
+    }
+}
+
+body {
+    background-color: beige;
+}
+  
+.box {
+    @include default-box(300px, 200px); /* mixin 사용 */
+    display: grid;
+    place-items: center;
+  
+    a {
+      color: white;
+      font-size: 40px;
+  
+      &:visited {
+        color: black;
+      }
+    }
+  }
+  
+.button-box {
+    @include default-box(200px, 100px);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
