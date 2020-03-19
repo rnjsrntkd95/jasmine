@@ -1,0 +1,248 @@
+@import 'config';
+
+// * {
+//     border: 1px solid red;
+// }
+
+
+
+@mixin hover-box($bottomUp, $time: 1s){
+    @keyframes box-up {
+        0% {
+            bottom: 0;
+        }
+    
+        100% {
+            bottom: $bottomUp;
+        }
+    }
+    position: relative;
+    animation-name: box-up;
+    animation-duration: $time;
+    animation-fill-mode: forwards;
+}
+
+body {
+    height: 120vh;
+    margin: 0;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/main_background_image.jpg);
+    background-size: cover;
+    background-position: center -100px;
+    background-repeat: no-repeat;
+    
+    
+}
+
+nav {
+    // background-color: $navbarColor;
+    display: flex;
+    justify-content: center;
+
+    .nav-container {
+        width: $containerWidth;
+        color: #ffffff;
+        padding: {
+            left: $containerPadding;
+            right: $containerPadding;
+        }
+        height: $navbarHeight;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .nav-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+            .nav-icon {
+                margin-right: 20px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+            
+            .nav-title {
+                display: flex;
+                align-items: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                padding-left: 20px;
+                border-left: 2px solid white;
+            }
+        }
+
+        .nav-right {
+            a {
+                text-decoration: none;
+                color: white;
+            }
+
+            .category {
+                padding: 0 15px;
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - #{$navbarHeight});
+
+    .intro {
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        .intro-message {
+            color: white;
+            font-size: 3.0em;
+            margin-top: 100px;
+        }
+
+        .join-btn {
+            color: white;
+            font-size: 1.2em;
+            background: linear-gradient(-45deg,#8e2de2,#4a00e0);
+            $paddingBlock: 17px;
+            $paddingInline: 90px;
+
+            padding: {
+                top:$paddingBlock;
+                bottom: $paddingBlock;
+                left: $paddingInline;
+                right: $paddingInline;
+            }  
+            border-radius: 30px;
+            
+            &:hover {
+                @include hover-box(3px, 0.3s);
+            }
+        }
+    }
+
+    .wave {
+        height: 120px;
+        width: 100%;
+        background: {
+            image: url(../img/wave.svg);
+            size: cover;
+            repeat: no-repeat;
+            // color: red;
+        }
+        margin: 0;
+        z-index: 5;
+    }
+    
+    .wave-buffer {
+        position: relative;
+        top: -20px;
+        height: 230px;
+        width: 100%;
+        background-color: $bodyColor;
+
+    }
+
+    .courses-wrapper {
+        position: relative;
+        top: -20px;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        background-color: $bodyColor;
+    }
+    .courses {
+        position: relative;
+        top: -180px;
+        
+        .courses-message {
+            text-align: center;
+            font-size: 1.9rem;
+        }
+        
+        .container {
+            z-index: 5;
+            width: 80vw;
+            padding: {
+                top: 50px;
+                bottom: 100px;
+                left: $containerPadding;
+                right: $containerPadding;
+            }
+            display: grid;
+            column-gap: $contentGap;
+            grid-template-columns: repeat(auto-fill, minmax($contentWidth, 1fr));
+
+            .content-box {
+                height: 350px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .content-img-wrap {
+                    overflow: hidden;
+                    border-radius: 20px;
+
+                    .content-img {
+                        flex: 5;
+                        width: 100%;
+                        z-index: 0;
+                        object-fit: cover;
+                        border-radius: 20px;
+                    }
+                }
+
+                .content-info {
+                    flex: 3;
+                    position: relative;
+                    top: -50px;
+                    width: 95%;
+                    border-radius: 20px;
+                    z-index: 10;
+                    background-color: white;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 10px 21px 0 #e7eeef;
+
+                    .content-detail {
+                        width: 90%;
+                        text-align: center;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+
+                        &:nth-child(1) {
+                            margin: {
+                                top: 10px;
+                                bottom: 7px;
+                            }
+                            font-weight: bold;
+                            font-size: 1.15rem;
+                        }
+
+                        &:nth-child(2) {
+                            margin: {
+                                bottom: 15px;
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            margin: {
+                                bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
