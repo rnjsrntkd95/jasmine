@@ -28,9 +28,7 @@ body {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/main_background_image.jpg);
     background-size: cover;
     background-position: center -100px;
-    background-repeat: no-repeat;
-    
-    
+    background-repeat: no-repeat;    
 }
 
 nav {
@@ -83,12 +81,28 @@ nav {
             .category {
                 padding: 0 15px;
                 font-size: 1.1em;
+                
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            .signup {
+                border-radius: 20px;
+                padding: {
+                    top: 5px;
+                    bottom: 5px;
+                    left: 25px;
+                    right: 25px;
+                }
+                background: linear-gradient(-45deg,#fdc830,#f37335);
             }
         }
     }
 }
 
 main {
+    z-index: 0;
     display: flex;
     flex-direction: column;
     // justify-content: center;
@@ -245,4 +259,42 @@ main {
             }
         }
     }
+    .courses-btn {
+        position: relative;
+        bottom: 200px;
+        width: 300px;
+        background: linear-gradient(-45deg,#fdc830,#f37335);
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding: {
+            top: 15px;
+            bottom: 15px;
+        }
+        border-radius: 30px;
+
+        &:hover {
+            bottom: 203px;
+            transition-duration: 0.3s;
+            box-shadow: 0 10px 21px 0 #e7eeef;
+        }
+    }
+}
+
+footer {
+    background-color: $navbarColor;
+    height: 200px;
+    position: relative;
+    top:-150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: hsl(208, 10%, 75%);
+}
+
+.chatbot {
+    position: fixed;
+    color: black;
+    bottom: 10px;
+    right: 10px;
 }
