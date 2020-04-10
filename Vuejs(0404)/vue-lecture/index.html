@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Practice</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+      .strong {
+        color: hotpink;
+      }
+      .clicked {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div id="app">
+        <div v-on:click="alertMessage">{{ message }}</div>
+
+        <input v-model="message" />
+        <div>{{ reversedMessage }}</div>
+
+        <div v-bind:class="className">Hi!!</div>
+
+        <div v-if="isShow">
+          Show!!
+        </div>
+        
+        <hr/>
+        <div v-for="item in list" :key="item">
+          {{ item }}
+        </div>
+        <hr/>
+
+        <button v-bind:class="{ clicked:isClicked }" v-on:click="clickBtn">버튼</button>
+    </div> -->
+
+    <div id="app">
+      <div v-for="movie in movieList" :key="movie.id">
+        <div><a :href="getTrailerLink(movie.yt_trailer_code)" target="_blank">{{ movie.title }}</a></div>
+
+        <!-- v-on: 을 @로 축약 가능 -->
+        <img @click="fetchDetails(movie.id)" :src="movie.medium_cover_image" width="40%"/>
+
+        <div v-for="genre in movie.genres" :key="genre">
+          {{ genre }}
+        </div>
+
+        <br/>
+        <hr/>
+        <br/>
+      </div>
+    </div>
+
+    <script src="src/js/main.js"></script>
+  </body>
+</html>
